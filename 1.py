@@ -50,6 +50,7 @@
 #for i in a:
   #for j in soup:
     #if i == j:
+from sortedcontainers import SortedDict
 
 print("Welcome to smart fridge")
 
@@ -57,12 +58,12 @@ l = 0
 m = 0
 date = 0
 
-soup = {3: ["drumstick"] , 3: ["birnjal"]}
+soup = {7: ["drumstick    ", 1] , 3: ["birnjal      ", 2] , 4: ["white pumpkin", 3]}
 
-side_dish = {7: ["beans"] , 14: ["carrot"] , 21: ["potato"]}
+side_dish = {7: ["beans ", 1] , 14: ["carrot", 2] , 21: ["potato", 3]}
 
-s_side_dish = dict(sorted(side_dish.items()))
-s_soup = dict(sorted(soup.items()))
+s_side_dish = SortedDict(side_dish)
+s_soup = SortedDict(soup)
 
 s = list(s_side_dish.values())
     
@@ -72,10 +73,10 @@ for i in range(5):
   try:
     date += 1
 
-    s_n = s[l]
-    g_n = g[m]
+    s_n = s[l][0]
+    g_n = g[m][0]
     
-    print( f"Day {date} side_dish {s_n} soup {g_n} ")
+    print( f"|Day {date} | side_dish {s_n} | soup {g_n} |")
     m += 1
     l += 1
 
